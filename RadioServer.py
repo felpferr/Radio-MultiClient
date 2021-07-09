@@ -10,10 +10,7 @@ import time
 import os
 from player import streamming
 
-warnings.filterwarnings('ignore')
-
-musica = 0
-rate = 0
+#warnings.filterwarnings('ignore') 
 
 serverPort = c.portaDefault
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,14 +28,13 @@ def verificaArquivo(arq_nome):
         
         return False
 
-def radio_player():
-    while musica != '' :
-        playback = streamming(rate)
-        playback.play(musica)
+def radio_player(rate,musica):
+    playback = streamming(rate)
+    playback.play(musica)
 
 def radio():
 
-    musica = wave.open('/home/firulipe/Downloads/{}.wav'.format("1"),'rb')
+    musica = wave.open('/home/firulipe/Música/aef.wav','rb')
     
     '''
     Convertendo o valor da taxa de reprodução(rate) que é um inteiro
@@ -46,15 +42,15 @@ def radio():
     '''
     rate = str(musica.getframerate())
 
-    radio_player()
+    radio_player(rate,musica)
     
 
-def conexoes():
+'''def conexoes():
     while True:
         connectionSocket, addr = serverSocket.accept()
         print("Conexão   vinda   de  {}".format(addr))
         #th = threading.Thread(target)
-
+'''
 def main():
     while True:
         #th1 = threading.Thread(target=conexoes, args=())
