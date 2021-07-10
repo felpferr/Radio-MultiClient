@@ -5,6 +5,9 @@ import pyaudio
 import threading
 
 class streamming:
+
+    chunkAtual = "lsd".encode("utf-8")
+
     def __init__(self,Rate):
         self.ratte = int(Rate)
         self.buffer = pyaudio.PyAudio()
@@ -14,7 +17,8 @@ class streamming:
     
     def play(self,musica):
         while True:
-            self.stream.write(musica.readframes(4096))
+            self.chunkAtual = musica.readframes(4096)
+            #self.stream.write(self.chunkAtual)
             if not musica:
                 self.stream.stop_stream()
                 self.stream.close()
