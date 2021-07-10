@@ -3,6 +3,7 @@ import config as c
 import re
 import pyaudio
 import threading
+import time 
 
 class streamming:
 
@@ -16,9 +17,11 @@ class streamming:
         self.stream.start_stream()
     
     def play(self,musica):
+        i = 0
         while True:
-            self.chunkAtual = musica.readframes(4096)
-            #self.stream.write(self.chunkAtual)
+            #self.chunkAtual = musica.readframes(4096)
+            self.stream.write(musica.readframes(4096))
+
             if not musica:
                 self.stream.stop_stream()
                 self.stream.close()

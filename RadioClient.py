@@ -23,9 +23,8 @@ def radio_player(rate,musica):
 
 def main():
     rate = clientSocket.recv(1024).decode('utf-8')
-    musica = clientSocket.recv(4096)
-
-    radio_player(rate,musica)
+    
+    radio_player(rate,clientSocket)
     
 if __name__ == '__main__':
 	main()

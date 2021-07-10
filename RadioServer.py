@@ -59,7 +59,7 @@ def transmissao(connectionSocket,rate, musica):
     connectionSocket.send(rate.encode('utf-8'))
 
     while musica != "":
-        connectionSocket.send(streamming.chunkAtual)
+        connectionSocket.send(musica.readframes(4096))
     
     musica.close()
 
